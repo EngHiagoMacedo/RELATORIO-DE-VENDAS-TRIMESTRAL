@@ -1,220 +1,231 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Relatório Estratégico - Sistec Solar</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        :root {
-            --green-main: #13aa4e;
-            --blue: #0388c5;
-            --orange: #f6841d;
-            --black: #000000;
-            --yellow-gold: #ffca00;
-            --gray-bg: #f8f9fa;
-        }
+<meta charset="UTF-8">
+<title>Plano de Bonificação - Sistec Solar</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: #333; padding: 20px; }
+<style>
 
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            background: white;
-            margin: 0 auto 15mm auto;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
+body{
+font-family: Arial, Helvetica, sans-serif;
+margin:0;
+background:linear-gradient(135deg,#eef2ff,#e0f2fe);
+}
 
-        /* Moldura de Identidade Visual */
-        .gradient-bar {
-            width: 100%;
-            height: 14mm;
-            background: linear-gradient(90deg, var(--green-main) 0%, var(--blue) 50%, var(--orange) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20mm;
-            color: white;
-            font-size: 10pt;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+/* HEADER */
 
-        .container { padding: 15mm 20mm; flex-grow: 1; }
+header{
+background: linear-gradient(90deg,#0ea5e9,#2563eb);
+color:white;
+text-align:center;
+padding:50px;
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
 
-        /* Capa */
-        .cover-content { text-align: center; justify-content: center; display: flex; flex-direction: column; height: 100%; }
-        .logo-main { max-width: 220px; margin: 0 auto 20px; }
-        .main-title { font-size: 36pt; font-weight: 800; color: var(--black); line-height: 1.1; margin: 20px 0; }
-        .sub-title { font-size: 18pt; color: var(--blue); margin-bottom: 50px; }
-        .footer-info { text-align: left; padding: 30px; background: var(--gray-bg); border-left: 10px solid var(--orange); margin-top: 40px; }
+.logo{
+width:220px;
+margin-bottom:20px;
+}
 
-        /* Títulos e Textos */
-        h2 { color: var(--black); font-size: 18pt; margin: 25px 0 15px; border-bottom: 3px solid var(--yellow-gold); display: table; }
-        h3 { color: var(--blue); margin-top: 20px; font-size: 14pt; }
-        p { font-size: 11.5pt; line-height: 1.7; margin-bottom: 12px; text-align: justify; color: #333; }
+header h1{
+margin:0;
+font-size:40px;
+letter-spacing:1px;
+}
 
-        /* Gráficos e Tabelas */
-        .chart-box { width: 100%; height: 280px; margin: 20px 0; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        
-        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        th { background: var(--black); color: white; padding: 12px; text-align: left; font-size: 10pt; }
-        td { padding: 10px; border-bottom: 1px solid #eee; font-size: 10pt; }
-        tr:nth-child(even) { background: #fcfcfc; }
+header p{
+font-size:18px;
+margin-top:10px;
+opacity:0.9;
+}
 
-        .btn-pdf {
-            position: fixed; bottom: 30px; right: 30px;
-            padding: 15px 35px; background: var(--green-main);
-            color: white; border: none; border-radius: 50px;
-            font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
+/* CONTAINER */
 
-        @media print { .btn-pdf { display: none; } }
-    </style>
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px;
+}
+
+/* CARDS */
+
+.cards{
+display:flex;
+gap:30px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:14px;
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+width:350px;
+text-align:center;
+transition:0.35s;
+border-top:6px solid #2563eb;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 12px 35px rgba(0,0,0,0.25);
+}
+
+.card h2{
+font-size:28px;
+margin-bottom:10px;
+color:#1e3a8a;
+}
+
+.valor{
+font-size:52px;
+color:#2563eb;
+font-weight:bold;
+margin:20px 0;
+}
+
+.meta{
+font-size:18px;
+line-height:1.5;
+}
+
+/* META GERAL */
+
+.meta-geral{
+background:#1e293b;
+color:white;
+padding:45px;
+text-align:center;
+margin-top:40px;
+border-radius:14px;
+box-shadow:0 8px 25px rgba(0,0,0,0.25);
+}
+
+.meta-geral h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+.meta-geral p{
+font-size:20px;
+}
+
+/* BONUS */
+
+.bonus{
+background:linear-gradient(90deg,#0284c7,#2563eb);
+color:white;
+padding:45px;
+text-align:center;
+margin-top:30px;
+border-radius:14px;
+box-shadow:0 8px 25px rgba(0,0,0,0.25);
+}
+
+.bonus h2{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.bonus p{
+font-size:22px;
+}
+
+.valor-bonus{
+font-size:36px;
+font-weight:bold;
+margin-top:10px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+margin-top:45px;
+font-size:14px;
+color:#64748b;
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <button class="btn-pdf" onclick="baixarRelatorio()">BAIXAR RELATÓRIO COMPLETO</button>
+<header>
 
-    <div id="relatorio-completo">
-        
-        <div class="page">
-            <div class="gradient-bar"><span>Sistec Solar</span><span>Gestão Comercial</span></div>
-            <div class="container cover-content">
-                <img src="logo.png" alt="SISTEC SOLAR" class="logo-main">
-                <h1 class="main-title">RELATÓRIO DE INTELIGÊNCIA COMERCIAL</h1>
-                <p class="sub-title">Performance Trimestral e Planejamento de Safra</p>
-                
-                <div class="footer-info">
-                    <p><strong>Unidade Administrativa:</strong> Bom Jesus da Lapa - BA</p>
-                    <p><strong>Período de Análise:</strong> Nov/2025 a Jan/2026</p>
-                    <p><strong>Responsável:</strong> Gerência de Vendas</p>
-                </div>
-            </div>
-            <div class="gradient-bar"><span>Excelência em Energia Solar</span><span>2026</span></div>
-        </div>
+<img src="logo.png" class="logo">
 
-        <div class="page">
-            <div class="gradient-bar"><span>Sistec Solar</span><span>Análise Mensal e Metas</span></div>
-            <div class="container">
-                <h2>1. Introdução e Metodologia</h2>
-                <p>Este documento consolida os resultados da Sistec Solar no último trimestre, auditando o fluxo de faturamento e a aderência das estratégias de vendas às metas globais da empresa. A metodologia foca na conversão de contratos e no ticket médio gerado por consultor.</p>
+<h1>Plano de Bonificação</h1>
+<p>Equipe de Vendas • Sistec Solar</p>
 
-                <h2>2. Comparativo de Metas Mensais</h2>
-                <p>O trimestre apresentou um faturamento total de R$ 962.609,00. O mês de Novembro destacou-se com 103,3% da meta batida, enquanto Janeiro exige atenção estratégica devido ao déficit sazonal.</p>
-                
-                <div class="chart-box"><canvas id="chartMetaReal"></canvas></div>
+</header>
 
-                <h2>3. Ticket Médio por Consultor</h2>
-                <p>O Ticket Médio é um indicador vital para entender a qualidade das vendas. Ele revela se o faturamento é gerado por muitos pequenos contratos ou por projetos de grande porte (Usinas).</p>
-                
-                <div class="grid-2">
-                    <table>
-                        <thead>
-                            <tr><th>Vendedor</th><th>Ticket Médio Est.</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Ronaldo</td><td>R$ 28.555,00</td></tr>
-                            <tr><td>Jorge</td><td>R$ 30.000,00</td></tr>
-                            <tr><td>Willians</td><td>R$ 24.000,00</td></tr>
-                            <tr><td>Nilton</td><td>R$ 25.250,00</td></tr>
-                        </tbody>
-                    </table>
-                    <div style="height: 180px;"><canvas id="chartTicket"></canvas></div>
-                </div>
-            </div>
-            <div class="gradient-bar"><span>Página 02</span><span>Sistec Solar</span></div>
-        </div>
+<div class="container">
 
-        <div class="page">
-            <div class="gradient-bar"><span>Sistec Solar</span><span>Projeções e Performance</span></div>
-            <div class="container">
-                <h2>4. Sazonalidade e Projeção Próximo Ciclo</h2>
-                <p>A queda observada em Janeiro (apenas 49,2% da meta) é atribuída ao ciclo de férias e à maturação de propostas enviadas em Dezembro. Contudo, o volume de propostas em aberto (Pipeline) indica uma recuperação agressiva para o próximo trimestre.</p>
-                
-                <div class="chart-box"><canvas id="chartProjecao"></canvas></div>
+<div class="cards">
 
-                <h2>5. Ranking de Produtividade da Equipe</h2>
-                <p>Ronaldo mantém a liderança absoluta com R$ 257.000,00 faturados no período, seguido por Jorge com R$ 210.000,00. Estes dois perfis concentram 48,5% do resultado total da empresa.</p>
+<div class="card">
+<h2>🎯 Meta Semanal</h2>
 
-                <table>
-                    <thead>
-                        <tr><th>Vendedor</th><th>Total (R$)</th><th>Participação</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Ronaldo</td><td>R$ 257.000,00</td><td>26,7%</td></tr>
-                        <tr><td>Jorge</td><td>R$ 210.000,00</td><td>21,8%</td></tr>
-                        <tr><td>Willians</td><td>R$ 120.000,00</td><td>12,5%</td></tr>
-                        <tr><td>Nilton</td><td>R$ 101.000,00</td><td>10,5%</td></tr>
-                        <tr><td>Outros (4)</td><td>R$ 274.609,00</td><td>28,5%</td></tr>
-                    </tbody>
-                </table>
+<div class="valor">R$100</div>
 
-                <h2>6. Conclusão Geral</h2>
-                <p>O faturamento consolidado de quase R$ 1 milhão no trimestre valida a força da marca Sistec Solar em Bom Jesus da Lapa. As recomendações para o próximo ciclo incluem o treinamento intensivo da base da equipe para equilibrar a dependência dos líderes de vendas e o foco na conversão do funil represado em Janeiro.</p>
-            </div>
-            <div class="gradient-bar"><span>Página 03</span><span>Relatório Final</span></div>
-        </div>
+<p class="meta">
+Cada vendedor que atingir a meta semanal recebe
+<b>R$100 de bonificação.</b>
+</p>
 
-    </div>
+</div>
 
-    <script>
-        // Gráfico 1: Metas x Realizado
-        new Chart(document.getElementById('chartMetaReal'), {
-            type: 'bar',
-            data: {
-                labels: ['Nov/25', 'Dez/25', 'Jan/26'],
-                datasets: [
-                    { label: 'Realizado (R$)', data: [413150, 327859, 221600], backgroundColor: '#13aa4e' },
-                    { label: 'Meta (R$)', data: [400000, 400000, 450000], backgroundColor: '#0388c5' }
-                ]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
+<div class="card">
+<h2>🏆 Meta Mensal</h2>
 
-        // Gráfico 2: Ticket Médio (Linha)
-        new Chart(document.getElementById('chartTicket'), {
-            type: 'line',
-            data: {
-                labels: ['Ron', 'Jor', 'Wil', 'Nil'],
-                datasets: [{ label: 'Ticket (R$)', data: [28.5, 30.0, 24.0, 25.2], borderColor: '#f6841d', tension: 0.3 }]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
+<div class="valor">R$500</div>
 
-        // Gráfico 3: Projeção de Recuperação
-        new Chart(document.getElementById('chartProjecao'), {
-            type: 'line',
-            data: {
-                labels: ['Jan (Real)', 'Fev (Proj)', 'Mar (Proj)', 'Abr (Proj)'],
-                datasets: [{ 
-                    label: 'Tendência de Faturamento (R$)', 
-                    data: [221600, 310000, 380000, 420000], 
-                    borderColor: '#13aa4e', 
-                    borderDash: [5, 5],
-                    fill: true,
-                    backgroundColor: 'rgba(19, 170, 78, 0.1)'
-                }]
-            },
-            options: { responsive: true, maintainAspectRatio: false }
-        });
+<p class="meta">
+Atingindo <b>R$100.000 em vendas no mês</b>,
+o vendedor recebe <b>+ R$500 de bônus.</b>
+</p>
 
-        function baixarRelatorio() {
-            const element = document.getElementById('relatorio-completo');
-            html2pdf().set({
-                margin: 0,
-                filename: 'Relatorio_Estrategico_SistecSolar.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            }).from(element).save();
-        }
-    </script>
+</div>
+
+</div>
+
+<div class="meta-geral">
+
+<h2>⚠️ Regra Importante</h2>
+
+<p>
+A bonificação mensal será paga somente se a
+<b>meta geral da empresa for atingida.</b>
+</p>
+
+<p style="margin-top:10px">
+Trabalho em equipe gera resultado para todos!
+</p>
+
+</div>
+
+<div class="bonus">
+
+<h2>💰 Ganho Possível no Mês</h2>
+
+<p>4 semanas batendo meta + meta mensal</p>
+
+<div class="valor-bonus">Até R$900 de bonificação</div>
+
+</div>
+
+<footer>
+
+<p>☀️ Sistec Solar • Energia que transforma o futuro</p>
+
+</footer>
+
+</div>
+
 </body>
 </html>
+```
